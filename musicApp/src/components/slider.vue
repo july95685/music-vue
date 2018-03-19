@@ -42,10 +42,12 @@ export default {
 			this._initSlider();
 
 			if(this.autoPlay){
-				console.log(112);
 	        	this._play()
 			}
 		},20)
+	},
+	destory(){
+		clearTimeout(this.timer)
 	},
 	methods:{
 		_setSliderWidth(){
@@ -89,7 +91,6 @@ export default {
 	        	this.currentPageIndex = pageIndex
 
 	        	if(this.autoPlay){
-	        		console.log(112);
 	        		this._play()
 	        	}
 	        })
@@ -102,8 +103,6 @@ export default {
 		},
 		_play(){
 			let pageIndex = this.currentPageIndex + 1
-		
-			console.log(this.interval)
 			this.timer = setTimeout(() => {
 				this.slider.goToPage(pageIndex,0,400)
 			},this.interval)
